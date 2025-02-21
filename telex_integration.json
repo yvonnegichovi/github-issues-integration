@@ -1,51 +1,40 @@
 {
-  "name": "Custom Data Processor",
-  "description": "An integration that processes incoming data and modifies it based on user-defined rules.",
-  "type": "modifier",
+  "name": "Telex-to-GitHub Issue Tracker",
+  "description": "Automatically creates GitHub issues from messages in a Telex channel.",
+  "type": "integration",
   "settings": [
     {
-      "label": "Source Type",
-      "type": "dropdown",
-      "description": "Select the source of the data to be modified.",
-      "options": ["Google Forms", "Typeform", "HubSpot Forms API", "Nginx access logs"],
-      "default": "Google Forms",
+      "label": "Telex Webhook URL",
+      "type": "text",
+      "description": "Enter the webhook URL that listens for Telex messages.",
       "required": true
     },
     {
-      "label": "Enable Data Cleaning",
+      "label": "GitHub Repository",
+      "type": "text",
+      "description": "Enter the GitHub repository where issues should be created (format: user/repo).",
+      "required": true
+    },
+    {
+      "label": "GitHub Access Token",
+      "type": "text",
+      "description": "Enter your GitHub personal access token for authentication.",
+      "required": true
+    },
+    {
+      "label": "Issue Title Format",
+      "type": "dropdown",
+      "description": "Choose how issue titles should be generated.",
+      "options": ["Raw Message", "Prefix with 'Bug:'", "Prefix with 'Feature Request:'"],
+      "default": "Raw Message",
+      "required": true
+    },
+    {
+      "label": "Include Message Body",
       "type": "checkbox",
-      "description": "Enable automatic data formatting and cleaning.",
+      "description": "Include the full message body as the issue description.",
       "default": true
-    },
-    {
-      "label": "Transformation Rules",
-      "type": "multi-select",
-      "description": "Choose transformation rules to apply to the data.",
-      "options": ["Trim Spaces", "Lowercase Text", "Remove Duplicates", "Format Dates"],
-      "default": "Trim Spaces,Lowercase Text",
-      "required": true
-    },
-    {
-      "label": "Output Format",
-      "type": "dropdown",
-      "description": "Choose the format for the processed output.",
-      "options": ["JSON", "CSV", "XML"],
-      "default": "JSON",
-      "required": true
-    },
-    {
-      "label": "Webhook URL",
-      "type": "text",
-      "description": "Enter the URL where processed data should be sent.",
-      "required": true,
-      "default": ""
-    },
-    {
-      "label": "Processing Interval",
-      "type": "text",
-      "description": "Set the interval at which data processing should run (Crontab format).",
-      "default": "* * * * *",
-      "required": true
     }
   ]
 }
+
