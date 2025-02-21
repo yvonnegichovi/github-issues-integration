@@ -1,0 +1,51 @@
+{
+  "name": "Custom Data Processor",
+  "description": "An integration that processes incoming data and modifies it based on user-defined rules.",
+  "type": "modifier",
+  "settings": [
+    {
+      "label": "Source Type",
+      "type": "dropdown",
+      "description": "Select the source of the data to be modified.",
+      "options": ["Google Forms", "Typeform", "HubSpot Forms API", "Nginx access logs"],
+      "default": "Google Forms",
+      "required": true
+    },
+    {
+      "label": "Enable Data Cleaning",
+      "type": "checkbox",
+      "description": "Enable automatic data formatting and cleaning.",
+      "default": true
+    },
+    {
+      "label": "Transformation Rules",
+      "type": "multi-select",
+      "description": "Choose transformation rules to apply to the data.",
+      "options": ["Trim Spaces", "Lowercase Text", "Remove Duplicates", "Format Dates"],
+      "default": "Trim Spaces,Lowercase Text",
+      "required": true
+    },
+    {
+      "label": "Output Format",
+      "type": "dropdown",
+      "description": "Choose the format for the processed output.",
+      "options": ["JSON", "CSV", "XML"],
+      "default": "JSON",
+      "required": true
+    },
+    {
+      "label": "Webhook URL",
+      "type": "text",
+      "description": "Enter the URL where processed data should be sent.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "label": "Processing Interval",
+      "type": "text",
+      "description": "Set the interval at which data processing should run (Crontab format).",
+      "default": "* * * * *",
+      "required": true
+    }
+  ]
+}
