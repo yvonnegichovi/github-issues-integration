@@ -7,8 +7,6 @@ import os
 
 load_dotenv()
 
-print("Lets print for telex again")
-print(os.getenv("TELEX_WEBHOOK"))
 
 def parse_telex_message(message):
     """Extracts issue details from a structured Telex message."""

@@ -8,9 +8,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Test if the variable is loaded
-print(os.getenv("TELEX_WEBHOOK"))
-
 @app.route("/webhook", methods=["POST"])
 def telex_webhook():
     """Handles incoming Telex messages and creates GitHub issues."""
