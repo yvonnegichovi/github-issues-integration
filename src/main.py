@@ -3,7 +3,7 @@ import requests
 import re
 import os
 from dotenv import load_dotenv
-from src.config import config
+from config import config
 
 # Load environment variables
 load_dotenv()
@@ -68,7 +68,7 @@ def telex_integration_settings():
                 "label": "GitHub Token",
                 "type": "text",
                 "required": True,
-                "default": "config.GITHUB_REPO"
+                "default": "github_token"
             },
             {
                 "label": "Notify on Issue Creation",
