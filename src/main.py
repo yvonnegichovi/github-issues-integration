@@ -3,7 +3,7 @@ import requests
 import re
 import os
 from dotenv import load_dotenv
-from src.config import config
+from config import config
 
 # Load environment variables
 load_dotenv()
@@ -52,6 +52,39 @@ def telex_webhook():
         return jsonify({"status": "error", "message": "Failed to create issue"}), 500
 
     return jsonify({"status": "ignored", "message": "No valid issue format detected"}), 400
+
+@app.route("/integration-settings", methods=["GET"])
+def telex_integration_settings():
+    """Provides the required integration settings JSON for Telex."""
+    settings_response = {
+        "settings": [
+            {
+                "label": "GitHub Repository",
+                "type": "text",
+                "required": True,
+                "default": "user/repository"
+            },
+            {
+                "label": "GitHub Token",
+                "type": "text",
+                "required": True,
+                "default": "github_token"
+            },
+            {
+                "label": "Notify on Issue Creation",
+                "type": "checkbox",
+                "default": True
+            },
+            {
+                "label": "Allowed Issue Types",
+                "type": "multi-select",
+                "default": "Bug,Feature,Task",
+                "options": ["Bug", "Feature", "Task"]
+            }
+        ]
+    }
+    return jsonify(settings_response), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
