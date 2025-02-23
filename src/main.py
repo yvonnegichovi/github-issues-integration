@@ -3,7 +3,7 @@ import requests
 import re
 import os
 from dotenv import load_dotenv
-from config import config
+from src.config import config
 
 # Load environment variables
 load_dotenv()
